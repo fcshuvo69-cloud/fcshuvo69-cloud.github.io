@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC SHUVO — Personal Portfolio</title>
+<meta name="description" content="FC SHUVO — Premium Personal Portfolio">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--bg:#070707;--card:#101010;--text:#f5f5f5;--muted:#9b9b9b;--line:#242424;--accent:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(7,7,7,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:.5px;font-size:20px}
+.logo span{color:#888}
+.links{display:flex;gap:28px;color:#aaa;font-size:14px}
+.links a:hover{color:#fff}
+.menu{display:none;font-size:24px}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(120px);opacity:.13;background:#fff;right:-160px;top:10%;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.eyebrow{color:#aaa;text-transform:uppercase;letter-spacing:4px;font-size:12px;margin-bottom:18px}
+h1{font-family:"Space Grotesk";font-size:clamp(52px,8vw,96px);line-height:.95;letter-spacing:-4px}
+h1 span{color:#777}
+.hero p{max-width:620px;color:#aaa;font-size:17px;margin:28px 0}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:13px 20px;border:1px solid #333;border-radius:999px;font-size:14px;font-weight:600;transition:.25s}
+.btn.primary{background:#fff;color:#000;border-color:#fff}
+.btn:hover{transform:translateY(-2px);border-color:#777}
+.profile-card{border:1px solid var(--line);background:linear-gradient(145deg,#151515,#0b0b0b);border-radius:28px;padding:18px;box-shadow:0 25px 80px rgba(0,0,0,.4)}
+.avatar{height:420px;border-radius:20px;background:radial-gradient(circle at 50% 30%,#555 0,#222 24%,#0c0c0c 62%);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}
+.avatar:after{content:"FC";font-family:"Space Grotesk";font-size:150px;font-weight:700;color:#1d1d1d;position:absolute;top:45px}
+.avatar .silhouette{width:190px;height:300px;border-radius:100px 100px 35px 35px;background:#090909;position:relative;z-index:1;box-shadow:0 -20px 70px rgba(255,255,255,.04)}
+.card-meta{display:flex;justify-content:space-between;padding:15px 4px 2px;color:#888;font-size:12px}
+section{padding:110px 0;border-top:1px solid #151515}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#777}
+h2{font-family:"Space Grotesk";font-size:42px;letter-spacing:-2px;margin-top:8px}
+.section-head p{max-width:460px;color:#888;font-size:14px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.about p{color:#aaa;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{padding:25px;border:1px solid var(--line);border-radius:18px;background:#0c0c0c}
+.stat b{font-size:30px;font-family:"Space Grotesk"}
+.stat span{display:block;color:#777;font-size:12px;margin-top:5px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skill{border:1px solid var(--line);border-radius:18px;padding:25px;background:#0c0c0c}
+.skill strong{font-family:"Space Grotesk";font-size:19px}
+.skill p{color:#777;font-size:13px;margin-top:8px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{min-height:260px;border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(145deg,#151515,#090909)}
+.project:nth-child(2){background:linear-gradient(145deg,#111,#191919)}
+.project .num{color:#666;font-size:12px;margin-bottom:auto}
+.project h3{font-family:"Space Grotesk";font-size:27px}
+.project p{color:#777;font-size:13px;margin-top:7px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-box{border:1px solid var(--line);border-radius:22px;padding:30px;background:#0c0c0c}
+.contact-box p{color:#888;margin:10px 0 25px}
+.contact-row{padding:15px 0;border-top:1px solid #222;display:flex;justify-content:space-between;font-size:14px}
+.contact-row span{color:#777}
+footer{padding:30px 0;color:#666;font-size:12px;border-top:1px solid #151515;display:flex;justify-content:space-between}
+@media(max-width:800px){
+.links{display:none}.menu{display:block}.hero-grid,.about,.contact{grid-template-columns:1fr}.hero{padding-top:120px}.profile-card{max-width:500px;margin:auto}.avatar{height:330px}h1{letter-spacing:-3px}.skills{grid-template-columns:1fr 1fr}.projects{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:15px}
+}
+@media(max-width:500px){.skills{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}h2{font-size:34px}}
+</style>
+</head>
+<body>
+<nav><div class="container nav">
+<a class="logo" href="#">FC <span>SHUVO</span></a>
+<div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+<div class="menu">☰</div>
+</div></nav>
+
+<header class="hero"><div class="glow"></div><div class="container hero-grid">
+<div>
+<div class="eyebrow">Personal Portfolio · 2026</div>
+<h1>FC<br><span>SHUVO.</span></h1>
+<p>Welcome to my digital space. A clean, premium portfolio built around creativity, gaming, football and a passion for creating things that stand out.</p>
+<div class="btns"><a class="btn primary" href="#projects">Explore Work ↗</a><a class="btn" href="#contact">Contact Me</a></div>
+</div>
+<div class="profile-card"><div class="avatar"><div class="silhouette"></div></div><div class="card-meta"><span>FC SHUVO</span><span>Bangladesh · 2026</span></div></div>
+</div></header>
+
+<section id="about"><div class="container">
+<div class="section-head"><div><div class="kicker">01 — About</div><h2>A little about me.</h2></div><p>Simple, focused and premium. This section can be replaced with your real personal story, photo and details.</p></div>
+<div class="about"><div><p>Hi, I’m <b>SHUVO</b>. I’m building my own digital identity around the things I enjoy—football, gaming, visual design and creative projects. This portfolio is designed to feel modern without being overloaded.</p></div>
+<div class="stats"><div class="stat"><b>01</b><span>Personal Brand</span></div><div class="stat"><b>24/7</b><span>Creative Mindset</span></div><div class="stat"><b>∞</b><span>Ideas & Goals</span></div><div class="stat"><b>2026</b><span>Next Chapter</span></div></div></div>
+</div></section>
+
+<section id="skills"><div class="container">
+<div class="section-head"><div><div class="kicker">02 — Skills</div><h2>What I’m into.</h2></div></div>
+<div class="skills">
+<div class="skill"><strong>⚽ Football</strong><p>Brazil, players, matches and everything football.</p></div>
+<div class="skill"><strong>🎮 Gaming</strong><p>FC Mobile, squad building and competitive gameplay.</p></div>
+<div class="skill"><strong>🎨 Visual Design</strong><p>Posters, profile graphics, jerseys and creative visuals.</p></div>
+<div class="skill"><strong>📱 Digital</strong><p>Social content, personal branding and online presence.</p></div>
+<div class="skill"><strong>✨ Creativity</strong><p>Turning simple ideas into premium-looking concepts.</p></div>
+<div class="skill"><strong>🚀 Growth</strong><p>Learning, experimenting and improving every day.</p></div>
+</div></div></section>
+
+<section id="projects"><div class="container">
+<div class="section-head"><div><div class="kicker">03 — Projects</div><h2>Selected work.</h2></div></div>
+<div class="projects">
+<div class="project"><div class="num">PROJECT / 01</div><h3>FC SHUVO 9</h3><p>Personal gaming identity & profile concept.</p></div>
+<div class="project"><div class="num">PROJECT / 02</div><h3>Football Visuals</h3><p>Premium football-themed graphics and concepts.</p></div>
+<div class="project"><div class="num">PROJECT / 03</div><h3>Jersey Studio</h3><p>Custom football jersey design direction.</p></div>
+<div class="project"><div class="num">PROJECT / 04</div><h3>Digital Identity</h3><p>A consistent visual style for social platforms.</p></div>
+</div></div></section>
+
+<section id="contact"><div class="container">
+<div class="section-head"><div><div class="kicker">04 — Contact</div><h2>Let’s connect.</h2></div></div>
+<div class="contact"><div><p style="color:#aaa;max-width:450px">Want to collaborate, talk football, gaming or a creative project? Replace the details here with your real contact information.</p></div>
+<div class="contact-box"><p>Contact details</p><div class="contact-row"><span>Email</span><b>your@email.com</b></div><div class="contact-row"><span>Facebook</span><b>@FCShuvo</b></div><div class="contact-row"><span>Instagram</span><b>@FCShuvo</b></div></div></div>
+</div></section>
+
+<footer class="container"><span>© 2026 FC SHUVO. All rights reserved.</span><span>Built with purpose.</span></footer>
+</body>
+</html>
